@@ -144,11 +144,11 @@ class TCPWave(object):
 
             else:
                 logger.error('Failed with response {0}'.format(response))
-                raise ConnectorError({
+                return {
                     'status': 'Failure',
                     'status_code': str(response.status_code),
                     'response': response.text
-                })
+                }
 
         except Exception as e:
             logger.exception(str(e))
