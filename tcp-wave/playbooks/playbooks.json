@@ -1,0 +1,266 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "eb39342a-eae9-4c67-ad16-0e084738ecb8",
+      "@type": "WorkflowCollection",
+      "name": "Sample - TCP Wave - 1.0.0",
+      "description": "TCPWave offers automated DDI (DNS, DHCP, IPAM) workflow management, providing significant benefits to large-scale organizations. It reduces manual tasks, enhances IT productivity, and enables a focus on strategic initiatives that drive business growth. By standardizing network management processes, TCPWave enforces best practices and facilitates rapid, scalable service delivery.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Tcp",
+        "tcp-wave"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "88d9fd36-d406-484f-9f91-5baf77278de6",
+          "collection": "/api/3/workflow_collections/eb39342a-eae9-4c67-ad16-0e084738ecb8",
+          "triggerLimit": null,
+          "description": "Provides the details of Object defined in the TCPWave IPAM based on the IP Address of the object.",
+          "name": "Get Object Details By IP Address",
+          "tag": "#TCP Wave",
+          "recordTags": [
+            "Tcp",
+            "tcp-wave"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6633907d-86a2-40dc-8355-3bd94c6a5ea2",
+          "steps": [
+            {
+              "uuid": "6633907d-86a2-40dc-8355-3bd94c6a5ea2",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "b47695fc-b48e-43ad-9124-f8474b35b6a8",
+                "title": "TCP Wave: Get Object Details By IP Address",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "4e99060f-1bd2-47d3-a607-b57d7f2c1103",
+              "@type": "WorkflowStep",
+              "name": "Get Object Details By IP Address",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "TCP Wave",
+                "config": "''",
+                "params": {
+                  "ip_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "tcp-wave",
+                "operation": "get_object_details_by_ipaddress",
+                "operationTitle": "Get Object Details By IP Address",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "452cf40b-0e27-41ad-8531-3612581a2417",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Object Details By IP Address",
+              "sourceStep": "/api/3/workflow_steps/6633907d-86a2-40dc-8355-3bd94c6a5ea2",
+              "targetStep": "/api/3/workflow_steps/4e99060f-1bd2-47d3-a607-b57d7f2c1103"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "3ae51691-eb17-4054-80d9-eff604301b68",
+          "collection": "/api/3/workflow_collections/eb39342a-eae9-4c67-ad16-0e084738ecb8",
+          "triggerLimit": null,
+          "description": "Checks if the object exists in the TCPWave IPAM with the specified address.",
+          "name": "Check Object Exists",
+          "tag": "#TCP Wave",
+          "recordTags": [
+            "Tcp",
+            "tcp-wave"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e53b3797-eaae-4186-9e36-55866a8b90aa",
+          "steps": [
+            {
+              "uuid": "e53b3797-eaae-4186-9e36-55866a8b90aa",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "95d9619b-69c8-49c7-9a6b-aa6c0096d9ff",
+                "title": "TCP Wave: Check Object Exists",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "c34b9e7f-9eaf-4a01-951f-f35120967f61",
+              "@type": "WorkflowStep",
+              "name": "Check Object Exists",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "TCP Wave",
+                "config": "''",
+                "params": {
+                  "ip_address": "",
+                  "organization_name": ""
+                },
+                "version": "1.0.0",
+                "connector": "tcp-wave",
+                "operation": "check_object_exists",
+                "operationTitle": "Check Object Exists",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d1f58565-0ec9-49f6-88b2-1fa4e1519c44",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Check Object Exists",
+              "sourceStep": "/api/3/workflow_steps/e53b3797-eaae-4186-9e36-55866a8b90aa",
+              "targetStep": "/api/3/workflow_steps/c34b9e7f-9eaf-4a01-951f-f35120967f61"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7d833332-940d-476c-aac2-7e237ce27d91",
+          "collection": "/api/3/workflow_collections/eb39342a-eae9-4c67-ad16-0e084738ecb8",
+          "triggerLimit": null,
+          "description": "Provides the details of a Network defined in the TCPWave IPAM based on the IP Address of the Network.",
+          "name": "Get Network Details by IP Address",
+          "tag": "#TCP Wave",
+          "recordTags": [
+            "Tcp",
+            "tcp-wave"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7653e58e-019e-423b-adf1-d6e6d99c242f",
+          "steps": [
+            {
+              "uuid": "7653e58e-019e-423b-adf1-d6e6d99c242f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "0859cc51-faec-4f11-909b-a47f93e8a2b8",
+                "title": "TCP Wave: Get Network Details by IP Address",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "9172ea70-4fab-4793-88ba-cb4bdbffa3a9",
+              "@type": "WorkflowStep",
+              "name": "Get Network Details by IP Address",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "TCP Wave",
+                "config": "''",
+                "params": {
+                  "ip_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "tcp-wave",
+                "operation": "get_network_details_by_ipaddress",
+                "operationTitle": "Get Network Details by IP Address",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d077ce20-bd77-4e5c-8149-928d817bd107",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Network Details by IP Address",
+              "sourceStep": "/api/3/workflow_steps/7653e58e-019e-423b-adf1-d6e6d99c242f",
+              "targetStep": "/api/3/workflow_steps/9172ea70-4fab-4793-88ba-cb4bdbffa3a9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
